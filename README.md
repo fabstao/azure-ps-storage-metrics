@@ -4,7 +4,15 @@
 
 ## Guide:
 
-* Usage: ./getdata.ps1                                                    
+### Installation
+```
+$ git clone https://github.com/fabstao/azure-ps-storage-metrics.git
+$ cd azure-ps-storage-metrics
+```
+
+### Usage
+
+* Usage: `./getdata.ps1`
 * Azure PowerShell Module must be installed:                              
-* Install-Module -Name Az -Scope CurrentUser -Repository PSGallery -Force 
+* `Install-Module -Name Az -Scope CurrentUser -Repository PSGallery -Force`
 
