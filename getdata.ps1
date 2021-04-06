@@ -5,7 +5,12 @@
 # * Install-Module -Name Az -Scope CurrentUser -Repository PSGallery -Force *
 # ***************************************************************************
 
-#Connect-AzAccount # Login to the desired Azure account
+# Check if user is logged in
+$account = Get-AzContext
+if(($null -eq $account) -or ($account -eq "")) {
+	Connect-AzAccount 
+}
+
 function Get-AzStgMetrics {
 	[CmdletBinding()]
 	param (
