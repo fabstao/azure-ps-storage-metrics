@@ -22,9 +22,9 @@ function Get-AzStgMetrics {
 		$Type,
 		$Rrid
 	)
-	(Get-AzMetric -ResourceId $ResId -StartTime $StTime -TimeGrain $TGrain -MetricName $MetricN -DetailedOutput).Data | Export-Csv -Path "raw-$ResName-$Rrid"
-	Import-Csv -Path "raw-$ResName-$Rrid" | Select-Object *,@{Name='Type';Expression={$MetricN}} | Select-Object *,@{Name='Namespace';Expression={$Type}} | 
-	Export-Csv -Path "$ResourceName-$Rrid"
+	(Get-AzMetric -ResourceId $ResId -StartTime $StTime -TimeGrain $TGrain -MetricName $MetricN -DetailedOutput).Data | Export-Csv -Path "data\raw-$ResName-$Rrid"
+	Import-Csv -Path "data\raw-$ResName-$Rrid" | Select-Object *,@{Name='Type';Expression={$MetricN}} | Select-Object *,@{Name='Namespace';Expression={$Type}} | 
+	Export-Csv -Path "data\$ResourceName-$Rrid"
 }
 
 $WarningPreference = 'SilentlyContinue'
