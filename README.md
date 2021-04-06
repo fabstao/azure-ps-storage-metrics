@@ -16,3 +16,5 @@ $ cd azure-ps-storage-metrics
 * Azure PowerShell Module must be installed:                              
 * `Install-Module -Name Az -Scope CurrentUser -Repository PSGallery -Force`
 
+### Export data
+Just zip and send the files in the data subfolder

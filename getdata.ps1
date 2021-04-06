@@ -83,7 +83,7 @@ Foreach ($i in $ResourceId)
 	Get-AzStgMetrics -ResId $i/tableServices/default -ResName $ResourceName -StTime $fecha7 -TGrain 01:00:00 -MetricN "Egress" -Type "Table" -Rrid $egress_table
 
 	# Merge metrics
-	Get-ChildItem -Filter $ResourceName-*.csv | Select-Object -ExpandProperty FullName | Import-Csv | Export-Csv Merged-$ResourceName.csv -NoTypeInformation -Append
-	Remove-Item "$ResourceName-*.csv"
-	Remove-Item "raw-*.csv"
+	Get-ChildItem -Filter $ResourceName-*.csv | Select-Object -ExpandProperty FullName | Import-Csv | Export-Csv data\Merged-$ResourceName.csv -NoTypeInformation -Append
+	Remove-Item "data\$ResourceName-*.csv"
+	Remove-Item "data\raw-*.csv"
 }
