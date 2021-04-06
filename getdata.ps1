@@ -39,7 +39,8 @@ $ingress_table = "ingress_table.csv"
 $egress_blob = "egress_blob.csv"
 $egress_table = "egress_table.csv"
 
-$ResourceId = (Get-AzResource | Where-Object {($_.ResourceType -like "*storageAccounts*") -and ($_.Name -like "*latam*")}).ResourceID
+# $ResourceId = (Get-AzResource | Where-Object {($_.ResourceType -like "*storageAccounts*") -and ($_.Name -like "*latam*")}).ResourceID # Additional name based filter
+$ResourceId = (Get-AzResource | Where-Object {($_.ResourceType -like "*storageAccounts*") -and ($_.Name -like "*")}).ResourceID
  
 $metrics = Get-AzMetricDefinition -ResourceId $ResourceId[0]
 
@@ -83,7 +84,7 @@ Foreach ($i in $ResourceId)
 	Get-AzStgMetrics -ResId $i/tableServices/default -ResName $ResourceName -StTime $fecha7 -TGrain 01:00:00 -MetricN "Egress" -Type "Table" -Rrid $egress_table
 
 	# Merge metrics
-	Get-ChildItem -Filter $ResourceName-*.csv | Select-Object -ExpandProperty FullName | Import-Csv | Export-Csv data\Merged-$ResourceName.csv -NoTypeInformation -Append
+	Get-ChildItem -Filter data\$ResourceName-*.csv | Select-Object -ExpandProperty FullName | Import-Csv | Export-Csv data\Merged-$ResourceName.csv -NoTypeInformation -Append
 	Remove-Item "data\$ResourceName-*.csv"
 	Remove-Item "data\raw-*.csv"
 }
