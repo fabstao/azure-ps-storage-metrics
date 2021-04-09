@@ -58,22 +58,22 @@ Foreach ($i in $ResourceId)
 	Foreach ($j in $roles) {
 
 		# Get Staging CPU
-		Get-AzStgMetrics -ResId $i/slots/staging/roles/$j -ResName $ResourceName -StTime $fecha -TGrain 01:00:00 -MetricN "PercentageCPU" -Environment "staging" -Rrid $cpu_web
+		Get-AzStgMetrics -ResId $i/slots/staging/roles/$j -ResName $ResourceName -StTime $fecha -TGrain 01:00:00 -MetricN "PercentageCPU" -Environment "staging" -Rrid cpustg$j.csv
 
 		# Get Network Ingress
-		Get-AzStgMetrics -ResId $i/slots/staging/roles/$j -ResName $ResourceName -StTime $fecha -TGrain 01:00:00 -MetricN "NetworkIn" -Environment "staging" -Rrid $trans_table
+		Get-AzStgMetrics -ResId $i/slots/staging/roles/$j -ResName $ResourceName -StTime $fecha -TGrain 01:00:00 -MetricN "NetworkIn" -Environment "staging" -Rrid instg$j.csv
 		
 		# Get Network Egress/Out
-		Get-AzStgMetrics -ResId $i/slots/staging/roles/$j -ResName $ResourceName -StTime $fecha -TGrain 01:00:00 -MetricN "NetworkOut" -Environment "staging" -Rrid $trans_table
+		Get-AzStgMetrics -ResId $i/slots/staging/roles/$j -ResName $ResourceName -StTime $fecha -TGrain 01:00:00 -MetricN "NetworkOut" -Environment "staging" -Rrid outstg$j.csv
 
 		# Get Production CPU
-		Get-AzStgMetrics -ResId $i/slots/production/roles/$j -ResName $ResourceName -StTime $fecha -TGrain 01:00:00 -MetricN "PercentageCPU" -Environment "production" -Rrid $cpu_web
+		Get-AzStgMetrics -ResId $i/slots/production/roles/$j -ResName $ResourceName -StTime $fecha -TGrain 01:00:00 -MetricN "PercentageCPU" -Environment "production" -Rrid cpuprod$j.csv
 
 		# Get Network Ingress
-		Get-AzStgMetrics -ResId $i/slots/production/roles/$j -ResName $ResourceName -StTime $fecha -TGrain 01:00:00 -MetricN "NetworkIn" -Environment "production" -Rrid $trans_table
+		Get-AzStgMetrics -ResId $i/slots/production/roles/$j -ResName $ResourceName -StTime $fecha -TGrain 01:00:00 -MetricN "NetworkIn" -Environment "production" -Rrid inprod$j.csv
 		
 		# Get Network Egress/Out
-		Get-AzStgMetrics -ResId $i/slots/production/roles/$j -ResName $ResourceName -StTime $fecha -TGrain 01:00:00 -MetricN "NetworkOut" -Environment "production" -Rrid $trans_table
+		Get-AzStgMetrics -ResId $i/slots/production/roles/$j -ResName $ResourceName -StTime $fecha -TGrain 01:00:00 -MetricN "NetworkOut" -Environment "production" -Rrid outprod$j.csv
 
 	}
 
