@@ -36,7 +36,7 @@ $ingress_web = "_cloudsvc_ingress_web.csv"
 $ingress_worker = "_cloudsvc_ingress_worker.csv"
 $egress_web = "_cloudsvc_egress_web.csv"
 $egress_worker = "_cloudsvc_egress_worker.csv"
-$days = 5
+$days = -5
 $roles = @('Mobilligy.Internal', 'Mobilligy.JobWorker', 'Mobilligy.WebSite', 'Mobilligy.Partner', 'Mobilligy.PartnerJobWorker', 'Mobilligy.COS')
 $roles= @('WebRole1','WorkerRole1')
 # ---------------------
@@ -46,7 +46,7 @@ $ResourceId = (Get-AzResource | Where-Object {($_.ResourceType -like "*ClassicCo
  
 #$metrics = Get-AzMetricDefinition -ResourceId $ResourceId[0]
 
-$fecha = (Get-Date).AddDays(-$days)
+$fecha = (Get-Date).AddDays($days)
 
 #$metrics| Select-Object @{Name="Name";Expression={$_.Name.Value}},@{Name="Tag";Expression={$_.Name.LocalizedValue}},@{Name="PrimaryAggregationEnvironment";Expression={$_.PrimaryAggregationEnvironment}},@{Name="Unit";Expression={$_.Unit}} | Format-Table
 Foreach ($i in $ResourceId) 
