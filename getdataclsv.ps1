@@ -44,11 +44,11 @@ $roles= @('WebRole1','WorkerRole1')
 # $ResourceId = (Get-AzResource | Where-Object {($_.ResourceType -like "*Microsoft.ClassicCompute/domainNames*") -and ($_.Name -like "*latam*")}).ResourceID # Additional name based filter
 $ResourceId = (Get-AzResource | Where-Object {($_.ResourceType -like "*ClassicCompute*domainNames*") -and ($_.Name -like "*")}).ResourceID
  
-$metrics = Get-AzMetricDefinition -ResourceId $ResourceId[0]
+#$metrics = Get-AzMetricDefinition -ResourceId $ResourceId[0]
 
 $fecha = (Get-Date).AddDays(-$days)
 
-$metrics| Select-Object @{Name="Name";Expression={$_.Name.Value}},@{Name="Tag";Expression={$_.Name.LocalizedValue}},@{Name="PrimaryAggregationEnvironment";Expression={$_.PrimaryAggregationEnvironment}},@{Name="Unit";Expression={$_.Unit}} | Format-Table
+#$metrics| Select-Object @{Name="Name";Expression={$_.Name.Value}},@{Name="Tag";Expression={$_.Name.LocalizedValue}},@{Name="PrimaryAggregationEnvironment";Expression={$_.PrimaryAggregationEnvironment}},@{Name="Unit";Expression={$_.Unit}} | Format-Table
 Foreach ($i in $ResourceId) 
 {
 	Write-Output "Resource: $i"
