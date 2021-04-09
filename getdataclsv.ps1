@@ -41,8 +41,8 @@ $roles = @('Mobilligy.Internal', 'Mobilligy.JobWorker', 'Mobilligy.WebSite', 'Mo
 $roles= @('WebRole1','WorkerRole1')
 # ---------------------
 
-# $ResourceId = (Get-AzResource | Where-Object {($_.ResourceEnvironment -like "*Microsoft.ClassicCompute/domainNames*") -and ($_.Name -like "*latam*")}).ResourceID # Additional name based filter
-$ResourceId = (Get-AzResource | Where-Object {($_.ResourceEnvironment -like "*Microsoft.ClassicCompute*domainNames*") -and ($_.Name -like "*")}).ResourceID
+# $ResourceId = (Get-AzResource | Where-Object {($_.ResourceType -like "*Microsoft.ClassicCompute/domainNames*") -and ($_.Name -like "*latam*")}).ResourceID # Additional name based filter
+$ResourceId = (Get-AzResource | Where-Object {($_.ResourceType -like "*ClassicCompute*domainNames*") -and ($_.Name -like "*")}).ResourceID
  
 $metrics = Get-AzMetricDefinition -ResourceId $ResourceId[0]
 
