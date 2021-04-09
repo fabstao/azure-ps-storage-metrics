@@ -46,7 +46,8 @@ $ResourceId = (Get-AzResource | Where-Object {($_.ResourceType -like "*ClassicCo
  
 #$metrics = Get-AzMetricDefinition -ResourceId $ResourceId[0]
 
-$fecha = (Get-Date).AddDays($days)
+$fecha = (Get-Date).AddDays(-5)
+Write-Output "StartTime: $fecha"
 
 #$metrics| Select-Object @{Name="Name";Expression={$_.Name.Value}},@{Name="Tag";Expression={$_.Name.LocalizedValue}},@{Name="PrimaryAggregationEnvironment";Expression={$_.PrimaryAggregationEnvironment}},@{Name="Unit";Expression={$_.Unit}} | Format-Table
 Foreach ($i in $ResourceId) 
