@@ -46,7 +46,7 @@ $ResourceId = (Get-AzResource | Where-Object {($_.ResourceType -like "*ClassicCo
  
 #$metrics = Get-AzMetricDefinition -ResourceId $ResourceId[0]
 
-$fecha = (Get-Date).AddDays(-5)
+$fecha = (Get-Date).AddDays($days)
 Write-Output "StartTime: $fecha"
 
 #$metrics| Select-Object @{Name="Name";Expression={$_.Name.Value}},@{Name="Tag";Expression={$_.Name.LocalizedValue}},@{Name="PrimaryAggregationEnvironment";Expression={$_.PrimaryAggregationEnvironment}},@{Name="Unit";Expression={$_.Unit}} | Format-Table
@@ -58,22 +58,22 @@ Foreach ($i in $ResourceId)
 	Foreach ($j in $roles) {
 
 		# Get Staging CPU
-		Get-AzStgMetrics -ResId $i/slots/staging/roles/$j -ResName $ResourceName -StTime $fecha7 -TGrain 01:00:00 -MetricN "PercentageCPU" -Environment "staging" -Rrid $cpu_web
+		Get-AzStgMetrics -ResId $i/slots/staging/roles/$j -ResName $ResourceName -StTime $fecha -TGrain 01:00:00 -MetricN "PercentageCPU" -Environment "staging" -Rrid $cpu_web
 
 		# Get Network Ingress
-		Get-AzStgMetrics -ResId $i/slots/staging/roles/$j -ResName $ResourceName -StTime $fecha7 -TGrain 01:00:00 -MetricN "NetworkIn" -Environment "staging" -Rrid $trans_table
+		Get-AzStgMetrics -ResId $i/slots/staging/roles/$j -ResName $ResourceName -StTime $fecha -TGrain 01:00:00 -MetricN "NetworkIn" -Environment "staging" -Rrid $trans_table
 		
 		# Get Network Egress/Out
-		Get-AzStgMetrics -ResId $i/slots/staging/roles/$j -ResName $ResourceName -StTime $fecha7 -TGrain 01:00:00 -MetricN "NetworkOut" -Environment "staging" -Rrid $trans_table
+		Get-AzStgMetrics -ResId $i/slots/staging/roles/$j -ResName $ResourceName -StTime $fecha -TGrain 01:00:00 -MetricN "NetworkOut" -Environment "staging" -Rrid $trans_table
 
 		# Get Production CPU
-		Get-AzStgMetrics -ResId $i/slots/production/roles/$j -ResName $ResourceName -StTime $fecha7 -TGrain 01:00:00 -MetricN "PercentageCPU" -Environment "production" -Rrid $cpu_web
+		Get-AzStgMetrics -ResId $i/slots/production/roles/$j -ResName $ResourceName -StTime $fecha -TGrain 01:00:00 -MetricN "PercentageCPU" -Environment "production" -Rrid $cpu_web
 
 		# Get Network Ingress
-		Get-AzStgMetrics -ResId $i/slots/production/roles/$j -ResName $ResourceName -StTime $fecha7 -TGrain 01:00:00 -MetricN "NetworkIn" -Environment "production" -Rrid $trans_table
+		Get-AzStgMetrics -ResId $i/slots/production/roles/$j -ResName $ResourceName -StTime $fecha -TGrain 01:00:00 -MetricN "NetworkIn" -Environment "production" -Rrid $trans_table
 		
 		# Get Network Egress/Out
-		Get-AzStgMetrics -ResId $i/slots/production/roles/$j -ResName $ResourceName -StTime $fecha7 -TGrain 01:00:00 -MetricN "NetworkOut" -Environment "production" -Rrid $trans_table
+		Get-AzStgMetrics -ResId $i/slots/production/roles/$j -ResName $ResourceName -StTime $fecha -TGrain 01:00:00 -MetricN "NetworkOut" -Environment "production" -Rrid $trans_table
 
 	}
 
