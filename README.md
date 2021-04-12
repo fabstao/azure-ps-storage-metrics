@@ -10,9 +10,18 @@ $ git clone https://github.com/fabstao/azure-ps-storage-metrics.git
 $ cd azure-ps-storage-metrics
 ```
 
-### Usage
+## Usage
 
-* Usage: `./getdata.ps1`
+### Storage
+
+* Usage: `./getdatastg.ps1`
+
+### Storage
+
+* Usage: `./getdataclsv.ps1`
+
+### Requirements
+
 * Azure PowerShell Module must be installed:                              
 * `Install-Module -Name Az -Scope CurrentUser -Repository PSGallery -Force`
 
