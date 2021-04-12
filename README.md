@@ -16,7 +16,7 @@ $ cd azure-ps-storage-metrics
 
 * Usage: `./getdatastg.ps1`
 
-### Storage
+### Cloud Service
 
 * Usage: `./getdataclsv.ps1`
 
