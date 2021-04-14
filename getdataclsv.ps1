@@ -47,7 +47,7 @@ $egress_web = "_cloudsvc_egress_web.csv"
 $egress_worker = "_cloudsvc_egress_worker.csv"
 $days = -1
 $roles = @('Mobilligy.Internal', 'Mobilligy.JobWorker', 'Mobilligy.WebSite', 'Mobilligy.Partner', 'Mobilligy.PartnerJobWorker', 'Mobilligy.COS')
-$roles= @('WebRole1','WorkerRole1')
+#$roles= @('WebRole1','WorkerRole1')
 #$envs = @('staging','production')
 $envs = @('production')
 # ---------------------
